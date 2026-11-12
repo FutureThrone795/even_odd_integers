@@ -1,4 +1,5 @@
-use std::{fmt::{Display, Write}, ops::Add};
+use std::fmt::{Display, Write};
+use std::ops::{Add, Mul, Sub};
 use crate::util::u64_to_char_unchecked;
 use crate::even::Even;
 
@@ -9,8 +10,22 @@ pub struct Odd {
 
 impl Add for Odd {
     type Output = Even;
-    fn add(self, other: Odd) -> Even { 
-        return Even { data: self.data + other.data + 1 }
+    fn add(self, rhs: Odd) -> Even { 
+        return Even { data: self.data + rhs.data + 1 };
+    }
+}
+
+impl Sub for Odd {
+    type Output = Even;
+    fn sub(self, rhs: Self) -> Even {
+        return Even { data: self.data - rhs.data };
+    }
+}
+
+impl Mul for Odd {
+    type Output = Odd;
+    fn mul(self, rhs: Self) -> Odd {
+        return Odd { data: self.data * rhs.data * 2 + self.data + rhs.data };
     }
 }
 

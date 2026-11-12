@@ -1,6 +1,7 @@
+mod util;
 mod even;
 mod odd;
-mod util;
+mod mixed_ops;
 
 fn main() {
     let e1 = even::Even::try_from(300).unwrap();
@@ -11,6 +12,22 @@ fn main() {
     println!("Evens: ({}, {})", e1, e2);
     println!("Odds: ({}, {})", o1, o2);
 
-    println!("Hello, world! ({})", e1 + e2);
-    println!("Hello, world! ({})", o1 + o2);
+    println!();
+    println!("{} + {} = ({})", e1, e2, e1 + e2);
+    println!("{} + {} = ({})", o1, o2, o1 + o2);
+    
+    println!();
+
+    println!("{} + {} = ({})", o1, e2, o1 + e2);
+    println!("{} + {} = ({})", e1, o2, e1 + o2);
+
+    println!();
+
+    println!("{} * {} = ({})", e1, e2, e1 * e2);
+    println!("{} * {} = ({})", o1, o2, o1 * o2);
+
+    println!();
+    
+    println!("{} * {} = ({})", o1, e2, o1 * e2);
+    println!("{} * {} = ({})", e1, o2, e1 * o2);
 }

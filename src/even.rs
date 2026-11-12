@@ -1,4 +1,5 @@
-use std::{fmt::{Display, Write}, ops::Add};
+use std::fmt::{Display, Write};
+use std::ops::{Add, Mul, Sub};
 use crate::util::u64_to_char_unchecked;
 
 #[derive(Clone, Copy)]
@@ -8,8 +9,22 @@ pub struct Even {
 
 impl Add for Even {
     type Output = Even;
-    fn add(self, other: Even) -> Even { 
-        return Even { data: self.data + other.data }
+    fn add(self, rhs: Even) -> Even { 
+        return Even { data: self.data + rhs.data };
+    }
+}
+
+impl Sub for Even {
+    type Output = Even;
+    fn sub(self, rhs: Self) -> Even {
+        return Even { data: self.data - rhs.data };
+    }
+}
+
+impl Mul for Even {
+    type Output = Even;
+    fn mul(self, rhs: Self) -> Even {
+        return Even { data: self.data * rhs.data * 2 };
     }
 }
 
